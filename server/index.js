@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 //     }
 //   },
 //   optionsSuccessStatus: 200, // For legacy browser support
-// };
+// }; ..
 
 // Apply the CORS middleware
 app.use(cors()); // corsOptions to param later
