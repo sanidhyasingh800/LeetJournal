@@ -25,8 +25,6 @@ app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true})) 
 // enables the front and back end domains to interact as they are hosted on different domains usually
 // Define the allowed origins
-const allowedOrigins = ['https://leetjournal.netlify.app']; // front end
-
 // const corsOptions = {
 //   origin: function (origin, callback) {
 //     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -39,14 +37,22 @@ const allowedOrigins = ['https://leetjournal.netlify.app']; // front end
 //   },
 //   optionsSuccessStatus: 200, // For legacy browser support
 // }; 
+const allowedOrigins = ['https://leetjournal.netlify.app', 'https://leetjournal-d16ba849c9e0.herokuapp.com'];
+
 const corsOptions = {
-    origin: '*', // Allow all originss
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed methods
-    preflightContinue: false, 
-    optionsSuccessStatus: 204,
-  };
-// Apply the CORS middleware
-app.use(cors(corsOptions)); // corsOptions to param laters
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', 
+  credentials: true, // Allow cookies or authentication headers
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 // database: mongDB
 // we can now connect our backend to an actual database
 // we use the mongoDB atlas hosting service 
