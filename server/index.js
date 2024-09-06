@@ -46,7 +46,7 @@ const corsOptions = {
     optionsSuccessStatus: 204,
   };
 // Apply the CORS middleware
-app.use(cors(corsOptions)); // corsOptions to param later
+app.use(cors(corsOptions)); // corsOptions to param laters
 // database: mongDB
 // we can now connect our backend to an actual database
 // we use the mongoDB atlas hosting service 
