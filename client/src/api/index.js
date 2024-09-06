@@ -1,26 +1,21 @@
-import axios from 'axios'
+import axios from 'axios';
 
-// connecting the front and back ends 
-// axios is a library that is used to send HTTP requests from the front end to the back end
-
-
-
-// a url variable that stores the api endpoint that we have defined in our backend 
-
+// Base API endpoint
 const url = 'http://localhost:5000/questions';
 
-// exports an async function that that send a GET request to the posts endpoint
-export const getQuestions = () => axios.get(url);
+// Function to get questions based on userId
+export const getQuestions = (userId) => axios.get(`${url}/${userId}`);
 
-// exports an async function that that send a POST request to the posts endpoint
-export const createQuestion = (newPost) => axios.post(url, newPost);
+// Function to create a new question with userId
+export const createQuestion = (userId, newQuestion) => {
+    return axios.post(`${url}/${userId}`, newQuestion);
+}
 
-// exports an async function that that send a PATCH request to the posts endpoint
-export const updateQuestion = (id, updatedPost) => axios.patch(`${url}/${id}`, updatedPost);
+// Function to update an existing question based on question id
+export const updateQuestion = (userId, id, updatedQuestion) => axios.patch(`${url}/${userId}/${id}`, updatedQuestion);
 
-// exports an async function that that send a PATCH request to the posts endpoint
-export const deleteQuestion = (id) => axios.delete(`${url}/${id}`);
+// Function to delete a question based on question id
+export const deleteQuestion = (userId, id) => axios.delete(`${url}/${userId}/${id}`);
 
-export const updateJournal = (id, notes, code) => axios.patch(`${url}/${id}/journal`, {notes, code});
-
-
+// Function to update journal notes and code for a specific question
+export const updateJournal = (userId, id, notes, code) => axios.patch(`${url}/${userId}/${id}/journal`, { notes, code });

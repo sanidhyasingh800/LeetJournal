@@ -28,7 +28,7 @@ const Journal = ({ currentId, setCurrentId }) => {
 
     const [code, setCode] = useState('');
     const [notes, setNotes] = useState('');
-    const [language, setLanguage] = useState('cpp');  // Default to JavaScript mode
+    const [language, setLanguage] = useState('c_cpp');  // Default to JavaScript mode
 
     useEffect(() => {
         if (selectedQuestion) {

@@ -8,7 +8,7 @@ import * as constants from '../constants/actionTypes.js';
 const reducer = (questions = [], action) => {
     switch(action.type){
         case constants.FETCH_ALL:
-            return [...action.payload]; // returning in a reducer means updating the shared state
+            return action.payload ? [...action.payload]: []; // returning in a reducer means updating the shared state
         case constants.CREATE:
             return [...questions, action.payload];
         case constants.UPDATE:
@@ -30,7 +30,7 @@ const reducer = (questions = [], action) => {
                 }
             })
         case constants.SORT:
-            return [...action.payload];
+            return action.payload ? [...action.payload]: [];
         default:
             return questions;
     }

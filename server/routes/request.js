@@ -14,16 +14,20 @@ const oAuth2Client = new OAuth2Client(
 
 
 router.post('/', async (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:5000");
+    console.log("request received1");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Credentials", 'true');
     res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
     const redirectUrl = "http://localhost:5000/oauth";
+    console.log("request received2");
 
     const oAuth2Client = new OAuth2Client(
         process.env.CLIENT_ID, 
         process.env.CLIENT_SECRET, 
         redirectUrl
     );
+    console.log("request received3");
 
     const authorizedUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',

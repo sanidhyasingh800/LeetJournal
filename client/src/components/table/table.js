@@ -9,8 +9,7 @@ import { green, orange, red } from '@mui/material/colors';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { StyledTableRow, StyledTableCell} from './styles';
-import { sortQuestions } from '../../actions/questions';
-  
+import { sortQuestions, getQuestions } from '../../actions/questions';  
 
 
 
@@ -36,8 +35,12 @@ import { sortQuestions } from '../../actions/questions';
     return <Chip label={difficulty} sx={{ backgroundColor: color, color: '#fff' }} />;
   }
 
-const DetailsTable= ({currentId, setCurrentId}) => {
+const DetailsTable= ({currentId, setCurrentId, userId}) => {
     const dispatch = useDispatch();
+    // console.log(userId);
+    useEffect(() =>{
+    dispatch(getQuestions(userId));
+    }, [dispatch, userId]);
     const questions = useSelector((state) => state.questions|| []);
 
     const handleRowClick = (question) => {
@@ -50,7 +53,7 @@ const DetailsTable= ({currentId, setCurrentId}) => {
 
     const sort = (key) => {
         console.log(key);
-        dispatch(sortQuestions([...questions].sort((q1, q2) => {
+        dispatch(sortQuestions(userId, [...questions].sort((q1, q2) => {
             switch(key){
                 case "Question":
                     return q1.title.localeCompare(q2.title);
@@ -91,7 +94,7 @@ const DetailsTable= ({currentId, setCurrentId}) => {
   const paginatedQuestions = questions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
-    !questions.length ? <CircularProgress /> :<TableContainer component={Paper}>
+    <TableContainer component={Paper}>
       <Typography variant="h6" component="div" style={{ padding: 16 }}>
         Questions
       </Typography>

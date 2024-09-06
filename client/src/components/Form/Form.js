@@ -12,15 +12,14 @@ import { createQuestion, updateQuestion } from '../../actions/questions';
 
 import { useSelector } from "react-redux";
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ myProg, currentId, setCurrentId, userId}) => {
 
     const [questionData, setQuestionData] = useState({
+        userId: userId,
         title: '',
         difficulty: '',
         status: '',
         tags: '',
-        createdAt: '',
-        selectedFile: ''
     });
 
     const dispatch = useDispatch(); // this allows us to actually dispatch action to the redux wrapper
@@ -32,9 +31,9 @@ const Form = ({ currentId, setCurrentId }) => {
 
         if (currentId) { // if we have currentID selected, then we turn the form into a post editor instead of post creator
             console.log("updateQuestion is Dispatched");
-            dispatch(updateQuestion(currentId, questionData));
+            dispatch(updateQuestion(userId, currentId, questionData));
         } else {
-            dispatch(createQuestion(questionData));
+            dispatch(createQuestion(userId, questionData));
         }
         clear(); 
     }
@@ -42,11 +41,11 @@ const Form = ({ currentId, setCurrentId }) => {
     const clear = () => {
         setCurrentId(null);
         setQuestionData({
+            userId: userId,
             title: '',
             difficulty: '',
             status: '',
-            tags: '',
-            selectedFile: ''
+            tags: '', 
         })
     }
 
@@ -68,9 +67,9 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
 
         <StyledPaper>
-                            <Typography variant="h6"> {currentId ? 'Edit' : "Submit"} A Question</Typography>
+             <Typography variant="h6"> {currentId ? 'Edit' : "Submit"} A Question</Typography>
 
-            <StyledForm autoComplete="off" noValidate onSubmit={handleSubmit} >
+            <StyledForm autoComplete="off" noValidate onSubmit={handleSubmit} alignItems = "top" >
                 <TextField
                     name='Question'
                     variant='outlined'
@@ -113,10 +112,10 @@ const Form = ({ currentId, setCurrentId }) => {
                     onChange={(e) => setQuestionData({ ...questionData, tags: e.target.value.split(',') })}
                     style={{ margin: '10px 0', flexBasis: '25%' }}
                 />
-                <StyledButtonSubmit variant='container' color='primary =' size='large' type='submit'>
+                <StyledButtonSubmit disabled = {myProg} variant='container' color='primary =' size='large' type='submit'>
                     Submit
                 </StyledButtonSubmit>
-                <StyledButtonClear variant='container' color='primary =' size='large' onClick={clear}>
+                <StyledButtonClear disabled = {myProg} variant='container' color='primary =' size='large' onClick={clear}>
                     clear
                 </StyledButtonClear>
             </StyledForm>

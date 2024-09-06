@@ -12,6 +12,7 @@ export const Root = styled('div')(({ theme }) => ({
 // Styled Paper component
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
+  alignItems: 'center'
 }));
 
 // Styled Form component
