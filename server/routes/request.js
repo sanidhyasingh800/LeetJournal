@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
         prompt: 'consent'
 });
 
-res.json({url: authorizedUrl});
+res.redirect(authorizedUrl);
 
 
 });
