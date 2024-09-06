@@ -25,23 +25,23 @@ app.use(bodyParser.json({limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true})) 
 // enables the front and back end domains to interact as they are hosted on different domains usually
 // Define the allowed origins
-// const allowedOrigins = ['https://memories-project-sunny.netlify.app/']; 
+const allowedOrigins = ['https://leetjournal.netlify.app/']; 
 
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//       // If the origin is in the allowedOrig ins list or no origin (e.g., for non-browser clients), allow the request
-//       callback(null, true);
-//     } else {
-//       // Otherwise, reject the 
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   optionsSuccessStatus: 200, // For legacy browser support
-// }; ..
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      // If the origin is in the allowedOrig ins list or no origin (e.g., for non-browser clients), allow the request
+      callback(null, true);
+    } else {
+      // Otherwise, reject the 
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200, // For legacy browser support
+}; 
 
 // Apply the CORS middleware
-app.use(cors()); // corsOptions to param later
+app.use(cors(corsOptions)); // corsOptions to param later
 // database: mongDB
 // we can now connect our backend to an actual database
 // we use the mongoDB atlas hosting service 
