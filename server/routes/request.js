@@ -15,11 +15,11 @@ const oAuth2Client = new OAuth2Client(
 
 router.post('/', async (req, res, next) => {
     console.log("request received1");
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "https://leetjournal.netlify.app/");
     res.header("Access-Control-Allow-Credentials", 'true');
     res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
-    const redirectUrl = "http://localhost:5000/oauth";
+    const redirectUrl = "https://leetjournal-d16ba849c9e0.herokuapp.com/oauth";
     console.log("request received2");
 
     const oAuth2Client = new OAuth2Client(

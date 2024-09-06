@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
     console.log("Received OAuth code:", code); // Check if the code is reaching the backend
 
     try {
-        const redirectUrl = 'http://localhost:5000/oauth'; // Frontend redirect URL after successful OAuth login
+        const redirectUrl = 'https://leetjournal-d16ba849c9e0.herokuapp.com/oauth'; // Frontend redirect URL after successful OAuth login
 
         const oAuth2Client = new OAuth2Client(
             process.env.CLIENT_ID,
@@ -57,7 +57,7 @@ router.get('/', async (req, res, next) => {
         console.log('User Info: ', user);
         // console.log(user);
         // Redirect to frontend after logging user data
-        res.redirect(`http://localhost:3000?userId=${user.userid}&name=${user.name}&prof=${user.image}`); // Redirect to frontend after successful login
+        res.redirect(`https://leetjournal.netlify.app/?userId=${user.userid}&name=${user.name}&prof=${user.image}`); // Redirect to frontend after successful login
     } catch (error) {
         console.error('Error during OAuth process:', error);
         res.status(500).send('OAuth failed');
