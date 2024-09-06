@@ -8,7 +8,7 @@ const questionSchema = mongoose.Schema({
     tags: [String],
     notes: {
         type: String,
-        default: ''
+        default: '' 
     },
     code:{
         type: String,
@@ -24,3 +24,5 @@ const questionSchema = mongoose.Schema({
 const QuestionMessage = mongoose.model('QuestionMessage', questionSchema);
 
 export default QuestionMessage;
+
+// comment
