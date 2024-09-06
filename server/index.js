@@ -22,7 +22,7 @@ app.get('/', (req, res) =>{
 
 // tells the express app how to parse incoming requests from client
 app.use(bodyParser.json({limit: "30mb", extended: true})) 
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true})) 
 // enables the front and back end domains to interact as they are hosted on different domains usually
 // Define the allowed origins
 // const allowedOrigins = ['https://memories-project-sunny.netlify.app/']; 
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 // const corsOptions = {
 //   origin: function (origin, callback) {
 //     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//       // If the origin is in the allowedOrigins list or no origin (e.g., for non-browser clients), allow the request
+//       // If the origin is in the allowedOrig ins list or no origin (e.g., for non-browser clients), allow the request
 //       callback(null, true);
 //     } else {
 //       // Otherwise, reject the 
