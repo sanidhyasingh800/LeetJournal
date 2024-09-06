@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base API endpoint
-const url = 'http://localhost:5000/questions';
+const url = 'https://leetjournal-d16ba849c9e0.herokuapp.com/questions';
 
 // Function to get questions based on userId
 export const getQuestions = (userId) => axios.get(`${url}/${userId}`);

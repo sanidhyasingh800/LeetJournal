@@ -21,8 +21,8 @@ const navigate = (url) => {
 }
 
 const auth = async () => {
-  const response = await fetch('http://localhost:5000/request', {method: 'POST'});
-
+  const response = await fetch('https://leetjournal-d16ba849c9e0.herokuapp.com/request', {method: 'POST'});
+  console.log(response);
   const data = await response.json();
   navigate(data.url);
   const userId = data.userid;
@@ -37,7 +37,7 @@ const authToMyAcc = () => {
   const userImage = "https://lh3.googleusercontent.com/a/ACg8ocIu6CfRuxKihysS840nQXBHe9XAEvzn5-JW0f1wSzTRfCShl-LeYg=s96-c";
 
   // Simulate a query parameter to the URL
-  const url = `http://localhost:3000/?userId=${userId}&name=${encodeURIComponent(userName)}&prof=${encodeURIComponent(userImage)}`;
+  const url = `https://leetjournal.netlify.app/?userId=${userId}&name=${encodeURIComponent(userName)}&prof=${encodeURIComponent(userImage)}`;
   
   // Navigate to the new URL with user data
   navigate(url);
