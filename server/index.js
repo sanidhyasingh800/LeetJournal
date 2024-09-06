@@ -40,9 +40,9 @@ const allowedOrigins = ['https://leetjournal.netlify.app']; // front end
 //   optionsSuccessStatus: 200, // For legacy browser support
 // }; 
 const corsOptions = {
-    origin: '*', // Allow all origins
+    origin: '*', // Allow all originss
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed methods
-    preflightContinue: false,
+    preflightContinue: false, 
     optionsSuccessStatus: 204,
   };
 // Apply the CORS middleware
