@@ -15,9 +15,9 @@ dotenv.config();
 const app = express(); 
 
 app.get('/', (req, res) =>{
-    res.send("Entered the API");
+    res.send("Entered the API"); 
 });
-// this is the root for the API and is used when we access the API main page on heroku
+// this is the root for the API and is used  when we access the API main page on heroku
 
 
 // tells the express app how to parse incoming requests from client
