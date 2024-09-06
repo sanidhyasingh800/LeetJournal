@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 //   },
 //   optionsSuccessStatus: 200, // For legacy browser support
 // }; 
-const allowedOrigins = ['https://leetjournal.netlify.app', 'https://leetjournal-d16ba849c9e0.herokuapp.com'];
+const allowedOrigins = ['http://localhost:3000', 'https://leetjournal.netlify.app', 'https://leetjournal-d16ba849c9e0.herokuapp.com'];
 
 const corsOptions = {
   origin: function (origin, callback) {
