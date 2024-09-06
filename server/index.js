@@ -27,19 +27,24 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 // Define the allowed origins
 const allowedOrigins = ['https://leetjournal.netlify.app']; // front end
 
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+//       // If the origin is in the allowedOrig ins list or no origin (e.g., for non-browser clients), allow the request
+//       callback(null, true);
+//     } else {
+//       // Otherwise, reject the 
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   optionsSuccessStatus: 200, // For legacy browser support
+// }; 
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      // If the origin is in the allowedOrig ins list or no origin (e.g., for non-browser clients), allow the request
-      callback(null, true);
-    } else {
-      // Otherwise, reject the 
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  optionsSuccessStatus: 200, // For legacy browser support
-}; 
-
+    origin: '*', // Allow all origins
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed methods
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  };
 // Apply the CORS middleware
 app.use(cors(corsOptions)); // corsOptions to param later
 // database: mongDB
