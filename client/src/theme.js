@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    background: {
+    background: { 
       default: '#1E1E2D',
       paper: '#252634',
     },
