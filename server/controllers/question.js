@@ -1,5 +1,5 @@
 
-import QuestionMessage from "../models/QuestionMessage.js";
+import QuestionMessage from "../models/questionmessage.js";
 import mongoose from "mongoose";
 // abstract the routes and route handling for better scalability
 // export functions essentially make them available everywhere until they are intercepted by an import
