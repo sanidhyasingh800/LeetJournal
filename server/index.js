@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}))
 //       // If the origin is in the allowedOrigins list or no origin (e.g., for non-browser clients), allow the request
 //       callback(null, true);
 //     } else {
-//       // Otherwise, reject the request
+//       // Otherwise, reject the 
 //       callback(new Error('Not allowed by CORS'));
 //     }
 //   },
