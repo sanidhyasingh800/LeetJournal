@@ -14,13 +14,11 @@ const getUserData = async (access_token) => {
         // console.log("User data from Google:", data); // Logging to backend terminal
         return data;
     } catch (error) {
-        console.error("Error fetching user data:", error);
     }
 };
 
 router.get('/', async (req, res, next) => {
     const code = req.query.code;
-    console.log("Received OAuth code:", code); // Check if the code is reaching the backend
 
     try {
         const redirectUrl = 'https://leetjournal-d16ba849c9e0.herokuapp.com/oauth'; // Frontend redirect URL after successful OAuth login
@@ -54,12 +52,10 @@ router.get('/', async (req, res, next) => {
         }
 
         // Log user info to backend terminal
-        console.log('User Info: ', user);
         // console.log(user);
         // Redirect to frontend after logging user data
         res.redirect(`https://leetjournal.netlify.app/?userId=${user.userid}&name=${user.name}&prof=${user.image}`); // Redirect to frontend after successful login
     } catch (error) {
-        console.error('Error during OAuth process:', error);
         res.status(500).send('OAuth failed');
     }
 });
