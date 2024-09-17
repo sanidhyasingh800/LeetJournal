@@ -53,6 +53,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
+
 // database: mongDB
 // we can now connect our backend to an actual database
 // we use the mongoDB atlas hosting service 
