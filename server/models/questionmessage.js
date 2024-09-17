@@ -6,14 +6,8 @@ const questionSchema = mongoose.Schema({
     difficulty: String,
     status: String,
     tags: [String],
-    notes: {
-        type: String,
-        default: '' 
-    },
-    code:{
-        type: String,
-        default: ''
-    },
+    notes: String,
+    code: String,
     createdAt: {
         type: Date,
         default: new Date()
