@@ -17,7 +17,7 @@ import { updateJournal } from "../../actions/questions";
 ace.config.set("basePath", "/ace-workers");  // Path to where worker files are located in public directory
 ace.config.setModuleUrl("ace/mode/javascript_worker", "/ace-workers/worker-javascript.js");
 
-const Journal = ({ currentId, setCurrentId }) => {
+const Journal = ({ userId, currentId, setCurrentId }) => {
     const dispatch = useDispatch();
     const selectedQuestion = useSelector((state) => {
         if (currentId) {
@@ -40,7 +40,7 @@ const Journal = ({ currentId, setCurrentId }) => {
     const handleSave = () => {
         // Dispatch action to save code and notes (not implemented in this example)
         if(currentId){
-            dispatch(updateJournal(currentId, notes, code));
+            dispatch(updateJournal(userId, currentId, notes, code));
         }
     };
 

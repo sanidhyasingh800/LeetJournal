@@ -22,7 +22,6 @@ const navigate = (url) => {
 
 const auth = async () => {
   const response = await fetch('https://leetjournal-d16ba849c9e0.herokuapp.com/request', {method: 'POST'});
-  console.log(response);
   const data = await response.json();
   navigate(data.url);
   const userId = data.userid;

@@ -118,6 +118,9 @@ const Form = ({ myProg, setmyProg, currentId, setCurrentId, userId}) => {
                 <StyledButtonSubmit disabled = {myProg} variant='container' color='primary =' size='large' type='submit'>
                     Submit
                 </StyledButtonSubmit>
+                <StyledButtonClear disabled = {myProg} variant='container' color='primary =' size='large' onClick={clear}>
+                    Clear
+                </StyledButtonClear>
             </StyledForm>
         </StyledPaper>
     );
