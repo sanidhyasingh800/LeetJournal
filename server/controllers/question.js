@@ -58,6 +58,8 @@ export const deleteQuestion = async (req, res) => {
 export const UpdateNotesAndCode =  async (req, res) => {
     const { id: _id } = req.params; // req objects store params that they dynamically expect from the URL so we can access them through destructuring
     const { notes, code } = req.body;
+    console.log(notes);
+    console.log(code);
     const question = await QuestionMessage.findById(_id); // req body usually stores the data (in this case its the question), we have to assume that the front end sends in the question as part of the data, and then implement this on the front end later
     if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No question with that id');
 
