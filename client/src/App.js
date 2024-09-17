@@ -30,6 +30,8 @@ const auth = async () => {
 
 }
 
+
+
 const authToMyAcc = () => {
   // Manually set user data
   const userId = "100396715511587280746";
@@ -70,17 +72,30 @@ const App = () => {
     dispatch(getQuestions(userId));
   }, [dispatch, userId]);
 
+  const handleSignIn = async () => {
+    // could not get cors working so instead sending a static request to oauth
+    setmyProg(false);
+    await document.getElementById('oauth-form').submit();
+  };
+
   return ( 
   <>
   {!userId ? (
         <Container maxWidth="xs" style={{ textAlign: 'center', marginTop: '20vh' }}>
           <Typography variant="h4" gutterBottom>Welcome to LeetJournal</Typography>
           <Typography variant="body1" gutterBottom>Sign in with your Google account to continue</Typography>
-          
+          <form
+            id="oauth-form"
+            action="https://leetjournal-d16ba849c9e0.herokuapp.com/request"
+            method="post"
+            style={{ display: 'none' }}
+          >
+            <input type="submit" value="Press to log in" />
+       </form>
           <Button 
             variant="contained" 
             color="primary" 
-            onClick={() => {setmyProg(false); auth()}}
+            onClick={() => { handleSignIn()}}
             style={{ backgroundColor: '#4285F4', color: '#fff', padding: '10px 20px', marginTop: '20px' }}
           >
             Sign in with Google
@@ -110,7 +125,7 @@ const App = () => {
             <Box display="flex" flexDirection="column">
               {/* Form on the right */}
               <Box flex={{ xs: 12, md: 1 }} marginLeft={1} display="flex" flexDirection="column">
-                <Form myProg currentId={currentId} setCurrentId={setCurrentId} userId = {userId}/>
+                <Form myProg={myProg} setmyProg={setmyProg} currentId={currentId} setCurrentId={setCurrentId} userId = {userId}/>
               </Box>
     
               {/* Table in the middle */}

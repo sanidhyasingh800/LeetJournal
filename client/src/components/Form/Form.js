@@ -12,7 +12,7 @@ import { createQuestion, updateQuestion } from '../../actions/questions';
 
 import { useSelector } from "react-redux";
 
-const Form = ({ myProg, currentId, setCurrentId, userId}) => {
+const Form = ({ myProg, setmyProg, currentId, setCurrentId, userId}) => {
 
     const [questionData, setQuestionData] = useState({
         userId: userId,
@@ -63,6 +63,9 @@ const Form = ({ myProg, currentId, setCurrentId, userId}) => {
         if (selectedQuestion) setQuestionData(selectedQuestion);
     }, [selectedQuestion])
 
+    useEffect(() => {
+        console.log("myProg changed:", myProg);
+    }, [myProg]);
 
     return (
 
@@ -115,9 +118,6 @@ const Form = ({ myProg, currentId, setCurrentId, userId}) => {
                 <StyledButtonSubmit disabled = {myProg} variant='container' color='primary =' size='large' type='submit'>
                     Submit
                 </StyledButtonSubmit>
-                <StyledButtonClear disabled = {myProg} variant='container' color='primary =' size='large' onClick={clear}>
-                    clear
-                </StyledButtonClear>
             </StyledForm>
         </StyledPaper>
     );
